@@ -1,4 +1,8 @@
-package app;
+/**
+ * @Alumno: Matias Sebastiao
+ * @DNI: 31070095
+ * @Legajo: VINF011605
+ */
 
 import controllers.MedicionesController;
 import exceptions.GlucoForecastException;
@@ -12,6 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Clase principal de la aplicación GlucoForecast.
+ */
 public class GlucoForecastApp {
 
     private final RegistroDatosView registroDatosView;

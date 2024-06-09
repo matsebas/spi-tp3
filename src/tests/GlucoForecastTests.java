@@ -7,6 +7,9 @@ import models.Paciente;
 
 import java.time.LocalDate;
 
+/**
+ * Clase que contiene las pruebas de la clase GlucoForecast
+ */
 public class GlucoForecastTests {
 
     public static void main(String[] args) {
