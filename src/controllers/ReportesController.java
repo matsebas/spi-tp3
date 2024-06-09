@@ -1,32 +1,36 @@
 package controllers;
 
-import models.Paciente;
-import models.Reporte;
-import models.ReporteTipo;
+import models.*;
 
-import java.util.Date;
-import java.util.List;
+import java.time.LocalDate;
 
 public class ReportesController {
 
     public Reporte generarReporte(Paciente paciente, ReporteTipo tipoReporte) {
-        String datos = generarDatosReporte(paciente, tipoReporte);
-        Reporte reporte = new Reporte(null, paciente.getId(), tipoReporte, datos, new Date());
-        paciente.getHistorialReportes().add(reporte);
+        Reporte reporte;
+        switch (tipoReporte) {
+            case RANGOS_GLUCEMIA:
+                reporte = new ReporteRangosGlucemia(null, paciente.getId(), null, LocalDate.now());
+                break;
+            case HB1AC_HISTORICO:
+                reporte = new ReporteHbA1cHistorico(null, paciente.getId(), null, LocalDate.now());
+                break;
+            case PROMEDIOS_GLUCEMIA:
+                reporte = new ReportePromediosGlucemia(null, paciente.getId(), null, LocalDate.now());
+                break;
+            default:
+                System.out.println("Reporte No implementado o no disponible.");
+                return null;
+        }
+        String datos = reporte.generarDatosReporte(paciente);
+        reporte.setDatos(datos);
         return reporte;
     }
 
-    private String generarDatosReporte(Paciente paciente, ReporteTipo tipoReporte) {
-        // Implementación de la lógica para generar datos de reporte según el tipo
-        // Por simplicidad, se retorna un ejemplo de datos en formato JSON
-        return "[{\"tipo\": \"" + tipoReporte + "\", \"fecha\": \"" + new Date() + "\", \"valor\": 100}]";
-    }
-
-    public List<Reporte> obtenerHistorialReportes(Paciente paciente) {
-        return paciente.getHistorialReportes();
-    }
-
-    public List<ReporteTipo> listarTiposDeReportes() {
-        return Reporte.listarTipoDeReportes();
+    public void mostrarReporte(Reporte reporte) {
+        if (reporte != null) {
+            System.out.println("Reporte: " + reporte.getTipoReporte());
+            System.out.println("Datos: " + reporte.getDatos());
+        }
     }
 }

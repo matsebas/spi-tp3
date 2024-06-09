@@ -4,7 +4,8 @@ import exceptions.GlucoForecastException;
 import models.Medicion;
 import models.Paciente;
 
-import java.util.Date;
+import java.time.LocalDateTime;
+
 
 public class MedicionesController {
 
@@ -13,7 +14,7 @@ public class MedicionesController {
             throw new GlucoForecastException("Valor de glucemia fuera de rango.");
         }
 
-        Medicion medicion = new Medicion(null, paciente.getId(), new Date(), glucemia, 0, 0, 0, "", 0, notas, tags);
+        Medicion medicion = new Medicion(null, paciente.getId(), LocalDateTime.now(), glucemia, 0, 0, 0, "", 0, notas, tags);
         paciente.registrarMedicion(medicion);
 
         // Llamada al controlador de HbA1c para calcular la nueva estimación
@@ -26,7 +27,7 @@ public class MedicionesController {
             throw new GlucoForecastException("Cantidad de carbohidratos no puede ser negativa.");
         }
 
-        Medicion medicion = new Medicion(null, paciente.getId(), new Date(), 0, carbohidratos, 0, 0, descripcionComida, 0, "", "");
+        Medicion medicion = new Medicion(null, paciente.getId(), LocalDateTime.now(), 0, carbohidratos, 0, 0, descripcionComida, 0, "", "");
         paciente.registrarMedicion(medicion);
     }
 
@@ -35,7 +36,7 @@ public class MedicionesController {
             throw new GlucoForecastException("Dosis de insulina no puede ser negativa.");
         }
 
-        Medicion medicion = new Medicion(null, paciente.getId(), new Date(), 0, 0, insulinaComida, insulinaCorreccion, "", insulinaLenta, "", "");
+        Medicion medicion = new Medicion(null, paciente.getId(), LocalDateTime.now(), 0, 0, insulinaComida, insulinaCorreccion, "", insulinaLenta, "", "");
         paciente.registrarMedicion(medicion);
     }
 }

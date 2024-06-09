@@ -5,7 +5,7 @@ import controllers.MedicionesController;
 import exceptions.GlucoForecastException;
 import models.Paciente;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class GlucoForecastTests {
 
@@ -25,7 +25,7 @@ public class GlucoForecastTests {
     private HbA1cController hba1cController;
 
     public void setUp() {
-        paciente = new Paciente(1L, "Lionel", "Messi", "lionel.messi@gmail.com", "123456789", new Date(), 35.5, new Date());
+        paciente = new Paciente(1L, "Lionel", "Messi", "lionel.messi@gmail.com", "123456789", LocalDate.of(1986, 5, 24), 35.5, LocalDate.now());
         medicionesController = new MedicionesController();
         hba1cController = new HbA1cController();
     }

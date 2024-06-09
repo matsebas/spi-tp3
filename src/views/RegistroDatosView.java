@@ -3,6 +3,7 @@ package views;
 import controllers.MedicionesController;
 import exceptions.GlucoForecastException;
 import models.Paciente;
+import utils.UtilColores;
 
 import java.util.Scanner;
 
@@ -17,50 +18,50 @@ public class RegistroDatosView {
     public void registrarDatos(Paciente paciente) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Ingrese tipo de dato a registrar:");
-        System.out.println("1. Glucemia");
-        System.out.println("2. Carbohidratos");
-        System.out.println("3. Insulina");
+        System.out.println(UtilColores.WHITE_BOLD_BRIGHT + "> INGRESE EL TIPO DE DATO QUE DESEE REGISTRAR:" + UtilColores.RESET);
+        System.out.println(UtilColores.GREEN_BOLD_BRIGHT + "[1] Glucemia" + UtilColores.RESET);
+        System.out.println(UtilColores.GREEN_BOLD_BRIGHT + "[2] Carbohidratos" + UtilColores.RESET);
+        System.out.println(UtilColores.GREEN_BOLD_BRIGHT + "[3] Insulina\n" + UtilColores.RESET);
         int tipoDato = scanner.nextInt();
         scanner.nextLine(); // Consumir el salto de línea
 
         try {
             switch (tipoDato) {
                 case 1:
-                    System.out.println("Ingrese valor de glucemia:");
+                    System.out.println(UtilColores.WHITE_BOLD_BRIGHT + "> Ingrese valor de glucemia:" + UtilColores.RESET);
                     double glucemia = scanner.nextDouble();
-                    scanner.nextLine(); // Consumir el salto de línea
-                    System.out.println("Ingrese descripción:");
+                    scanner.nextLine();
+                    System.out.println(UtilColores.WHITE_BOLD_BRIGHT + "> Ingrese descripción:" + UtilColores.RESET);
                     String descripcionGlucemia = scanner.nextLine();
-                    System.out.println("Ingrese tags:");
+                    System.out.println(UtilColores.WHITE_BOLD_BRIGHT + "> Ingrese tags:" + UtilColores.RESET);
                     String tagsGlucemia = scanner.nextLine();
                     medicionesController.registrarGlucemia(paciente, glucemia, descripcionGlucemia, tagsGlucemia);
-                    System.out.println("Datos de glucemia registrados correctamente.");
+                    System.out.println(UtilColores.GREEN_BOLD_BRIGHT + "Datos de glucemia registrados correctamente." + UtilColores.RESET);
                     break;
                 case 2:
-                    System.out.println("Ingrese cantidad de carbohidratos:");
+                    System.out.println(UtilColores.WHITE_BOLD_BRIGHT + "> Ingrese cantidad de carbohidratos:" + UtilColores.RESET);
                     double carbohidratos = scanner.nextDouble();
-                    scanner.nextLine(); // Consumir el salto de línea
-                    System.out.println("Ingrese descripción:");
+                    scanner.nextLine();
+                    System.out.println(UtilColores.WHITE_BOLD_BRIGHT + "> Ingrese descripción:" + UtilColores.RESET);
                     String descripcionCarbohidratos = scanner.nextLine();
                     medicionesController.registrarCarbohidratos(paciente, carbohidratos, descripcionCarbohidratos);
-                    System.out.println("Datos de carbohidratos registrados correctamente.");
+                    System.out.println(UtilColores.GREEN_BOLD_BRIGHT + "Datos de carbohidratos registrados correctamente." + UtilColores.RESET);
                     break;
                 case 3:
-                    System.out.println("Ingrese dosis de insulina de comida:");
+                    System.out.println(UtilColores.WHITE_BOLD_BRIGHT + "> Ingrese dosis de insulina de comida:" + UtilColores.RESET);
                     double insulinaComida = scanner.nextDouble();
-                    System.out.println("Ingrese dosis de insulina de corrección:");
+                    System.out.println(UtilColores.WHITE_BOLD_BRIGHT + "> Ingrese dosis de insulina de corrección:" + UtilColores.RESET);
                     double insulinaCorreccion = scanner.nextDouble();
-                    System.out.println("Ingrese dosis de insulina lenta:");
+                    System.out.println(UtilColores.WHITE_BOLD_BRIGHT + "> Ingrese dosis de insulina lenta:" + UtilColores.RESET);
                     double insulinaLenta = scanner.nextDouble();
                     medicionesController.registrarInsulina(paciente, insulinaComida, insulinaCorreccion, insulinaLenta);
-                    System.out.println("Datos de insulina registrados correctamente.");
+                    System.out.println(UtilColores.GREEN_BOLD_BRIGHT + "Datos de insulina registrados correctamente." + UtilColores.RESET);
                     break;
                 default:
-                    System.out.println("Tipo de dato no válido.");
+                    System.out.println(UtilColores.RED_BOLD_BRIGHT + "Tipo de dato no válido." + UtilColores.RESET);
             }
         } catch (GlucoForecastException e) {
-            System.err.println(e.getMessage());
+            System.err.println(UtilColores.RED_BOLD_BRIGHT + e.getMessage() + UtilColores.RESET);
         }
     }
 }

@@ -1,20 +1,20 @@
 package models;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
-public class Reporte {
+public abstract class Reporte {
     private Long id;
     private Long pacienteId;
-    private ReporteTipo tipoReporte;
+    private final ReporteTipo tipoReporte;
     private String datos;
-    private Date fechaGeneracion;
+    private LocalDate fechaGeneracion;
 
     public Reporte(ReporteTipo tipoReporte) {
         this.tipoReporte = tipoReporte;
     }
 
-    public Reporte(Long id, Long pacienteId, ReporteTipo tipoReporte, String datos, Date fechaGeneracion) {
+    public Reporte(Long id, Long pacienteId, ReporteTipo tipoReporte, String datos, LocalDate fechaGeneracion) {
         this.id = id;
         this.pacienteId = pacienteId;
         this.tipoReporte = tipoReporte;
@@ -39,16 +39,29 @@ public class Reporte {
         return datos;
     }
 
-    public Date getFechaGeneracion() {
+    public void setDatos(String datos) {
+        this.datos = datos;
+    }
+
+    public LocalDate getFechaGeneracion() {
         return fechaGeneracion;
     }
 
-    public String generar(ReporteTipo tipoReporte) {
-        // Implementación de la generación del reporte
-        return "Reporte generado para el tipo: " + tipoReporte;
-    }
+    /**
+     * Método abstracto para generar los datos del reporte.
+     * Cada subclase debe implementar este método dependiendo del tipo de reporte que se requiera generar
+     *
+     * @param paciente @{@link Paciente} al que se le generará el reporte
+     * @return Reporte generado
+     */
+    public abstract String generarDatosReporte(Paciente paciente);
 
-    public static List<ReporteTipo> listarTipoDeReportes() {
-        return List.of(ReporteTipo.values());
+    /**
+     * Retorna una lista de los tipos de reportes habilitados.
+     *
+     * @return Lista de @{@link ReporteTipo} habilitados
+     */
+    public static List<ReporteTipo> reportesHabilitados() {
+        return List.of(ReporteTipo.HB1AC_HISTORICO, ReporteTipo.PROMEDIOS_GLUCEMIA, ReporteTipo.RANGOS_GLUCEMIA);
     }
 }

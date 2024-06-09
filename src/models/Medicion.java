@@ -1,11 +1,11 @@
 package models;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Medicion {
     private Long id;
     private Long pacienteId;
-    private Date fechaHora;
+    private LocalDateTime fechaHora;
     private double glucemia;
     private double carbohidratos;
     private double insulinaComida;
@@ -15,7 +15,7 @@ public class Medicion {
     private String notas;
     private String tags;
 
-    public Medicion(Long id, Long pacienteId, Date fechaHora, double glucemia, double carbohidratos, double insulinaComida, double insulinaCorreccion, String descripcionComida, double insulinaLenta, String notas, String tags) {
+    public Medicion(Long id, Long pacienteId, LocalDateTime fechaHora, double glucemia, double carbohidratos, double insulinaComida, double insulinaCorreccion, String descripcionComida, double insulinaLenta, String notas, String tags) {
         this.id = id;
         this.pacienteId = pacienteId;
         this.fechaHora = fechaHora;
@@ -38,7 +38,7 @@ public class Medicion {
         return pacienteId;
     }
 
-    public Date getFechaHora() {
+    public LocalDateTime getFechaHora() {
         return fechaHora;
     }
 

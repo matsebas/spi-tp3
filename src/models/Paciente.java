@@ -1,19 +1,19 @@
 package models;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Paciente extends Usuario {
-    private Date fechaNacimiento;
+    private LocalDate fechaNacimiento;
     private double pesoCorporal;
-    private Date fechaDiagnostico;
+    private LocalDate fechaDiagnostico;
 
     private List<Medicion> historialMediciones;
     private List<EstimacionGlicosilada> historialEstimaciones;
     private List<Reporte> historialReportes;
 
-    public Paciente(Long id, String nombre, String apellido, String email, String telefono, Date fechaNacimiento, double pesoCorporal, Date fechaDiagnostico) {
+    public Paciente(Long id, String nombre, String apellido, String email, String telefono, LocalDate fechaNacimiento, double pesoCorporal, LocalDate fechaDiagnostico) {
         super(id, nombre, apellido, email, telefono);
         this.fechaNacimiento = fechaNacimiento;
         this.pesoCorporal = pesoCorporal;
@@ -24,7 +24,7 @@ public class Paciente extends Usuario {
     }
 
     // Getters y setters
-    public Date getFechaNacimiento() {
+    public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
 
@@ -32,7 +32,7 @@ public class Paciente extends Usuario {
         return pesoCorporal;
     }
 
-    public Date getFechaDiagnostico() {
+    public LocalDate getFechaDiagnostico() {
         return fechaDiagnostico;
     }
 
