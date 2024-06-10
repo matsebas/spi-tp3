@@ -4,6 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Medico extends Usuario {
+
+    /**
+     * Sobrescribe el método autenticar para verificar si el nombre de usuario y la contraseña proporcionados
+     * coinciden con el usuario y la contraseña de un {@link Medico}
+     *
+     * @param usuario el nombre de usuario a autenticar
+     * @param clave   la contraseña a autenticar
+     * @return true si el nombre de usuario y la contraseña coinciden con el usuario y la contraseña de demostración,
+     * false en caso contrario
+     */
+    @Override
+    public boolean autenticar(String usuario, String clave) {
+        return DEMO_USER_MEDICO.equalsIgnoreCase(usuario) && DEMO_PASS_MEDICO.equalsIgnoreCase(clave);
+    }
+
     private String institucion;
     private List<Paciente> pacientes;
 
@@ -38,17 +53,5 @@ public class Medico extends Usuario {
         return new ArrayList<>();
     }
 
-    /**
-     * Sobrescribe el método autenticar para verificar si el nombre de usuario y la contraseña proporcionados
-     * coinciden con el usuario y la contraseña de un {@link Medico}
-     *
-     * @param usuario el nombre de usuario a autenticar
-     * @param clave   la contraseña a autenticar
-     * @return true si el nombre de usuario y la contraseña coinciden con el usuario y la contraseña de demostración,
-     * false en caso contrario
-     */
-    @Override
-    public boolean autenticar(String usuario, String clave) {
-        return DEMO_USER_MEDICO.equalsIgnoreCase(usuario) && DEMO_PASS_MEDICO.equalsIgnoreCase(clave);
-    }
+
 }

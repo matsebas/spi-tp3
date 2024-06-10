@@ -13,7 +13,8 @@ public class Paciente extends Usuario {
     private List<EstimacionGlicosilada> historialEstimaciones;
     private List<Reporte> historialReportes;
 
-    public Paciente(Long id, String nombre, String apellido, String email, String telefono, LocalDate fechaNacimiento, double pesoCorporal, LocalDate fechaDiagnostico) {
+    public Paciente(Long id, String nombre, String apellido, String email, String telefono, LocalDate fechaNacimiento,
+                    double pesoCorporal, LocalDate fechaDiagnostico) {
         super(id, nombre, apellido, email, telefono);
         this.fechaNacimiento = fechaNacimiento;
         this.pesoCorporal = pesoCorporal;

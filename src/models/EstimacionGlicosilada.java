@@ -34,9 +34,7 @@ public class EstimacionGlicosilada {
     }
 
     public static double calcularEstimacion(List<Medicion> mediciones) {
-        // Implementación del algoritmo de cálculo de HbA1c
-        // Por simplicidad, este es un ejemplo básico y no el cálculo real
-        double totalGlucemia = mediciones.stream().mapToDouble(Medicion::getGlucemia).sum();
-        return totalGlucemia / mediciones.size();
+        double promedioGlucemia = mediciones.stream().mapToDouble(Medicion::getGlucemia).average().orElse(0.0);
+        return (promedioGlucemia + 46.7) / 28.7;
     }
 }

@@ -1,4 +1,3 @@
-// Ubicación: src/model/Cuidador.java
 package models;
 
 import java.util.ArrayList;

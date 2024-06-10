@@ -17,8 +17,7 @@ public class HbA1cController {
             return false;
         }
 
-        double promedioGlucemia = mediciones.stream().mapToDouble(Medicion::getGlucemia).average().orElse(0.0);
-        double estimacionHbA1c = (promedioGlucemia + 46.7) / 28.7;
+        double estimacionHbA1c = EstimacionGlicosilada.calcularEstimacion(mediciones);
         EstimacionGlicosilada estimacion = new EstimacionGlicosilada(null, paciente.getId(), estimacionHbA1c, new Date());
         paciente.getHistorialEstimaciones().add(estimacion);
         return true;

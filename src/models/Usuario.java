@@ -2,6 +2,17 @@ package models;
 
 public abstract class Usuario {
 
+    public Usuario(Long id, String nombre, String apellido, String email, String telefono) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.telefono = telefono;
+    }
+
+    public abstract boolean autenticar(String usuario, String clave);
+
+
     public static final String DEMO_USER_PACIENTE = "paciente";
     public static final String DEMO_PASS_PACIENTE = "paciente";
 
@@ -16,15 +27,6 @@ public abstract class Usuario {
     private String apellido;
     private String email;
     private String telefono;
-
-    public Usuario(Long id, String nombre, String apellido, String email, String telefono) {
-        this.id = id;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.telefono = telefono;
-    }
-
     // Getters y setters
     public Long getId() {
         return id;
@@ -62,5 +64,4 @@ public abstract class Usuario {
         this.telefono = telefono;
     }
 
-    public abstract boolean autenticar(String usuario, String clave);
 }

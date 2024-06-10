@@ -9,12 +9,14 @@ import java.time.LocalDateTime;
 
 public class MedicionesController {
 
-    public void registrarGlucemia(Paciente paciente, double glucemia, String notas, String tags) throws GlucoForecastException {
+    public void registrarGlucemia(Paciente paciente, double glucemia, String notas, String tags)
+            throws GlucoForecastException {
         if (glucemia < 30 || glucemia > 600) {
             throw new GlucoForecastException("Valor de glucemia fuera de rango.");
         }
 
-        Medicion medicion = new Medicion(null, paciente.getId(), LocalDateTime.now(), glucemia, 0, 0, 0, "", 0, notas, tags);
+        Medicion medicion = new Medicion(null, paciente.getId(), LocalDateTime.now(), glucemia,
+                0, 0, 0, "", 0, notas, tags);
         paciente.registrarMedicion(medicion);
 
         // Llamada al controlador de HbA1c para calcular la nueva estimación
@@ -27,7 +29,8 @@ public class MedicionesController {
             throw new GlucoForecastException("Cantidad de carbohidratos no puede ser negativa.");
         }
 
-        Medicion medicion = new Medicion(null, paciente.getId(), LocalDateTime.now(), 0, carbohidratos, 0, 0, descripcionComida, 0, "", "");
+        Medicion medicion = new Medicion(null, paciente.getId(), LocalDateTime.now(), 0, carbohidratos,
+                0, 0, descripcionComida, 0, "", "");
         paciente.registrarMedicion(medicion);
     }
 
