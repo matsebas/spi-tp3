@@ -12,7 +12,7 @@ GlucoForecast es un sistema de gestión y monitoreo para pacientes con diabetes.
 
 ## Requisitos
 
-- Java Development Kit (JDK) 8 o superior.
+- Java Development Kit (JDK) 17 o superior.
 
 ## Instalación
 
