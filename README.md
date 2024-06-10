@@ -29,7 +29,7 @@ GlucoForecast es un sistema de gestión y monitoreo para pacientes con diabetes.
 
 El proyecto está organizado en los siguientes paquetes:
 
-- `app`: Contiene la clase principal `GlucoForecastApp` que inicia la aplicación y maneja el menú principal.
+- `src`: Contiene la clase principal `GlucoForecastApp` que inicia la aplicación y maneja el menú principal.
 - `controllers`: Contiene los controladores para la gestión de mediciones, cálculo de HbA1c y generación de reportes.
 - `exceptions`: Contiene la clase de excepciones personalizadas `GlucoForecastException`.
 - `models`: Contiene las clases de modelos de datos como `Paciente`, `Medicion`, `EstimacionGlicosilada` y diferentes tipos de reportes.
